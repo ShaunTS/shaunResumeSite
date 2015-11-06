@@ -189,3 +189,12 @@ div.h-bullets {
     padding-left: 50px;
     padding-right: 50px;
 }
+
+#resume-link h4 {
+    font-style: italic;
+    color: #FFF;
+}
+
+#resume-link .panel {
+    border: none;
+}
