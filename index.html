@@ -5,26 +5,407 @@
 
     <meta charset="utf-8">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
-        <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:200italic,400,700">
         <link rel="stylesheet" href="/home/ssmith/lab/a100/bCard/static/css/normalize.css">
-        <link rel="stylesheet" href="/home/ssmith/lab/a100/bCard/static/css/base.css">
+
+        <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+        <!-- Latest compiled and minified CSS -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" integrity="sha512-dTfge/zgoMYpP7QbHy4gWMEGsbsdZeCXz7irItjcC3sPUFtf0kuFbDz/ixG7ArTxmDjLXDmezHubeNikyKGVyQ==" crossorigin="anonymous">
+        <!-- Latest compiled and minified JavaScript -->
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js" integrity="sha512-K1qjQ+NcF2TYO/eI3M6v8EiNYZfA95pQumfvcVrTHtwQVDG+aHRqLi/ETn2uB+1JqwYqVG3LIvdm9lj6imS/pQ==" crossorigin="anonymous"></script>
+
+        <link rel="stylesheet" href="static/js/highlight/styles/monokai.css">
+
+        <script src="static/js/highlight/highlight.pack.js"></script>
+        <script>hljs.initHighlightingOnLoad();</script>
+
+
+        <link rel="stylesheet" href="static/css/base.css">
+
     </head>
 
-    <body>
-        <div id="bcard">
-        <img src="static/img/pipboy.jpg">
+    <body class="bg-dark">
+        <div class="jumbotron jumbo-shrink bg-ora">
+            <div class="row">
+                <h2>Shaun T Smith</h2>
+                <h4>Cloud and Software Engineering</h4>
+            </div>
+            <div class="row">
+                <ul class="list-unstyled list-inline">
+                    <li><a href=""><i class="fa fa-facebook fa-3x"></i></a></li>
+                    <li><a href=""><i class="fa fa-github fa-3x"></i></a></li>
+                    <li><a href="https://www.linkedin.com/pub/shaun-t-smith/103/b00/269"><i class="fa fa-linkedin-square fa-3x"></i></a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="container" id="info-panel">
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="col-md-3">
+                            <div class="prof-pic">
+                                <img src="static/img/pipboy.jpg">
+                            </div>
+                        </div>
+                        <div class="col-md-9">
+                            <table class="table">
+                                <thead>
+                                    <tr><th colspan="2"><h4>Personal Info</h4></th></tr>
+                                </thead>
+                                <tbody>
+                                    <tr><td>Most Recent</td><td>Software Engineer at Jaroop (September 2014 - August 2015)</td></tr>
 
-		    <h1>Shaun T Smith</h1>
+                                    <tr><td>education</td><td>Central Connecticut State University</td></tr>
+                                    <tr><td>location</td><td>Southbury, CT</td></tr>
+                                    <tr><td>phone</td><td>(203) 233-7753</td></tr>
+                                    <tr><td>email</td><td>sts_0@outlook.com</td></tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container skill-table">
+            <div class="panel panel-ora">
+                <div class="panel-heading">
+                    <h4>Professional Skill Summary</h4>
+                </div>
+                <div class="panel-body">
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th>
+                                Programming Languages
+                                </th>
 
-            <p class="quote">"History does not repeat itself, but it rhymes"</p>
+                                <th>
+                                Libraries and Packages
+                                </th>
 
-
-            <a href=""><i class="fa fa-facebook fa-3x"></i></a>
-            <a href=""><i class="fa fa-github fa-3x"></i></a>
-            <a href=""><i class="fa fa-google-plus fa-3x"></i></a>
-            <a href="https://www.linkedin.com/pub/shaun-t-smith/103/b00/269"><i class="fa fa-linkedin-square fa-3x"></i></a>
+                                <th>
+                                Professional Tools
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <ul class="list-unstyled">
+                                        <li>Scala</li>
+                                        <li>Java</li>
+                                        <li>JavaScript</li>
+                                        <li>HTML / CSS</li>
+                                        <li>PostgreSQL / MySQL</li>
+                                    </ul>
+                                </td>
+                                <td>
+                                    <ul class="list-unstyled">
+                                        <li>Play Framework</li>
+                                        <li>Backbone.js</li>
+                                        <li>JQuery</li>
+                                        <li>UnderSccore.js</li>
+                                        <li>Bootstrap</li>
+                                    </ul>
+                                </td>
+                                <td>
+                                    <ul class="list-unstyled">
+                                        <li>Sublime Text 3</li>
+                                        <li>Ubuntu Linux</li>
+                                        <li>GitHub</li>
+                                        <li>Jira</li>
+                                        <li>Heroku</li>
+                                    </ul>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div><!-- panel -->
         </div>
 
-	</body>
 
+        <div class="container" id="experience-desc">
+            <div class="panel panel-ora">
+                <div class="panel-heading">
+                    <h4>My Experience as a Developer</h4>
+                </div>
+
+                <div class="panel-body">
+                    <p>
+                        The majority of my professional experience has been as an open source back-end developer, building and maintaining cloud-based applications on Heroku using Play Framework in Scala and Java.
+                    </p>
+
+                    <br />
+                    <h5><b>Core features and design principles of these applications include</b></h5>
+                    <div class="h-bullets">
+                        <h6><b>+</b> Strict adherence to the MVC architectural pattern; using Scala on the server side with Javascript Backbone on the front-end to facilitate user interaction.</h6>
+                        <h6><b>+</b> An emphasis on RESTful and Reactive programming techniques via HTTP, TCP, and AMQP messaging protocols, as well as client side Ajax requests sent via jQuery or Websocket.</h6>
+                        <h6><b>+</b> Transactional, ACID compliant database interactions in MySQL and PostgreSQL</h6>
+                        <h6><b>+</b> OAuth2 authentication via a separately running server.</h6>
+                        <h6><b>+</b> Logic based form validation using Javascript and Bootstrap CSS</h6>
+                    </div>
+
+                    <p>
+                    <h5><b>The largest project I’ve worked</b></h5>
+                        As a member of the development team at Jaroop, my time was largely spent working on a cloud based enterprise application for an engineering company whose primary focus is building power plants and renewable energy solutions. The core function of this app was to facilitate document control and logic based work flow on hundreds of thousands of files between Engineers, Vendors, and Contractors while enforcing a complex system of user based permissions.
+                    </p><p>
+                        <b>My personal responsibilities on this project included</b>: Bug fixing, adding new functionalities both on the back-end and the front-end, load testing, optimizing text search, implementing and managing real-time email notifications, ensuring cross-app user syndication, and administering to the live running database when needed.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="container" id="code-ex">
+            <div class="panel panel-ora">
+                <div class="panel-heading">
+                    <h4>Code Samples</h4>
+                </div>
+
+                <div class="panel-body">
+
+                    <ul class="nav nav-tabs" role="tablist">
+                      <li role="presentation" class="active"><a href="#scala-ex" aria-controls="scala-ex">Scala</a></li>
+                      <li role="presentation"><a href="#specs2-ex" aria-controls="specs2-ex">Specs2</a></li>
+                      <li role="presentation"><a href="#javascript-ex" aria-controls="javascript-ex">Javascript</a></li>
+                    </ul>
+
+                    <div class="tab-content">
+                        <div role="tabpanel" class="tab-pane active" id="scala-ex">
+                        <h4>Base53 Utility</h4>
+                            <p class="code-desc">
+                            This is a simple utility I devised for the purpose of aliasing number values to more recognizable alphabetic characters.
+
+                            The particular use case I had in mind was to alias auto-incremented numeric ids commonly used in relational databases like MySQL and PostgreSQL.
+
+                            eg given a set of object ids in base 10: (3, 711, 56438)
+
+                            they would be aliased to the base 53 string values: ("c", "mv", "tdT")
+
+                            </p>
+
+                            <pre><code class="scala">
+package org.sts.util
+
+object Base53 {
+
+    val minLength: Int = 1
+
+    val base: Double = 53D
+
+    val radix: Map[Long, Char] =
+        (List.range(97, 123) ++ List.range(65, 91)).map(_.toChar).zipWithIndex
+        .map { case (digit, i) => (i+1).toLong -> digit }
+        .toMap + (0L -> '0')
+
+    val legalChar = "[[A-za-z]]"
+
+    def apply(n: Long): String = fromLong(n)
+
+    def apply(str: String): Long = fromString(str)
+
+    /** Converts a base 10 number value to a base 53 string
+     *  @param id A long value that will be converted to Base53
+     *  @return A String representing the given value in Base53
+     */
+    def fromLong(id: Long): String = {
+        if(id > 0) {
+            val steps: Seq[Long] =
+            Seq.range(0, scala.math.floor(log53(id)).toLong + 1).reverse
+
+            var carry: Long = id
+
+            steps.map(java.lang.Math.pow(base, _)).map { x =>
+                val digit = carry / x
+                carry = carry % x.toLong
+                digit.toLong
+            }.map(radix(_)).mkString
+        }
+        else "0"
+    }
+
+    /** Maps a single char to the its corresponding digit value.
+     *  @param digit A char value
+     */
+    def fromChar(digit: Char): Long = Seq('Z', digit).sorted match {
+        case Seq('0', _) => 0L
+        case Seq(`digit`, lower) => (digit.toLong - 38L)
+        case Seq(upper, `digit`) => (digit.toLong - 96L)
+    }
+
+    private def radixCheck(arg: String): String = {
+        arg.map(_.toInt).find {
+            case zero @ 48 => false
+            case upper if(64 < upper && upper < 91) => false
+            case lower if(96 < lower && lower < 123) => false
+            case _ => true
+        }.foreach {
+            illegal => throw new java.lang.NumberFormatException(
+                s"'${illegal.toChar}' is not contained in base-53 radix [0, a-z, A-Z]"
+            )
+        }
+        arg
+    }
+
+    /** Decodes the given base 53 string to its corresponding base 10
+     *  value as a Long
+     *  @param id A string representing a numeric value in base 53.
+     *  @return The corresponding numeric base 10 value.
+     */
+    def fromString(id: String): Long = radixCheck(id).reverse.toList
+        .map(fromChar).zipWithIndex
+        .map { case (x, i) => x * java.lang.Math.pow(base, i) }
+        .sum.toLong
+
+    def log53(x: Double): Double = (
+        scala.math.log(x)/scala.math.log(base)
+    )
+
+    /** Returns the given base 53 string, incremented by 1
+     *  @param id A string representing a base 53 value
+     *  @return The given value incremented by 1
+     *
+     *  @note this method works by parsing through the digits of the corresponding
+     *  base 10 number value, without ever setting it to a variable. This means this
+     *  method could be used to generate base 53 values well in excess of the MaxValue
+     *  allowed by the Long data type.
+     */
+    def nextAfter(id: String): String = {
+        val digits: List[Long] = radixCheck(id).toList.reverse.map(fromChar)
+
+        val (pos, digit) = digits.zipWithIndex
+            .collectFirst { case (x, i) if x < (base-1) => (i, x) }
+            .getOrElse(id.length -> 0L)
+
+        val (lower, higher) = digits.splitAt(pos)
+
+
+
+        (List.fill(lower.length)(0L) ++ List(digit + 1L) ++ higher.drop(1))
+            .map(radix).reverse.mkString
+    }
+}
+                            </code></pre>
+                        </div><!-- tab-pane-scala -->
+
+                        <div role="tabpanel" class="tab-pane" id="specs2-ex">
+                            <h4>Base53 Specification</h4>
+
+                            <pre><code class="scala">
+
+package test.unit.util
+
+import org.specs2.mutable.Specification
+import org.sts.util.Base53
+
+
+object Base53Spec extends Specification with Base53Expected {
+
+    "Base53 utility" should { br
+        t
+        "Convert number values [0-52] to corresponding digits" in {
+            val digitValues: List[Long] = List.range(0L, 53L)
+
+            val test: List[String] = digitValues.map(Base53.fromLong)
+
+            test foreach {
+                _ must have length(1)
+            }
+
+            val testDigits: List[Char] = test.map(_.head)
+
+            testDigits must contain(exactly(allDigits: _ *).inOrder)
+        }
+
+
+        br;t
+        "Convert number values over 52 to corresponding Base 53 strings" >> {
+
+            "53" in { Base53.fromLong(53L) must equalTo("a0")}
+
+            "999" in { Base53.fromLong(999L) must equalTo("rS") }
+
+            "77546" in { Base53.fromLong(77546L) must equalTo("AFg") }
+
+            "4294967298" in { Base53.fromLong(4294967298L) must equalTo("jnqelR") }
+            bt
+        }
+
+        br;t
+        "Increment base 53 string values by 1" >> {
+
+            "a0 + 1" in {
+                Base53.nextAfter("a0") must equalTo("aa")
+            }
+
+            "rS + 1" in {
+                Base53.nextAfter("rS") must equalTo("rT")
+            }
+
+            "AFg + 1" in {
+                Base53.nextAfter("AFg") must equalTo("AFh")
+            }
+
+            "jnqelR + 1" in {
+                Base53.nextAfter("jnqelR") must equalTo("jnqelS")
+            }
+            bt
+        }
+        bt
+    }
+}
+
+
+trait Base53Expected {
+
+    val lowerChr: List[Char] = List('a', 'b', 'c', 'd', 'e', 'f', 'g',
+        'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't',
+        'u', 'v', 'w', 'x', 'y', 'z')
+
+
+    val upperChr: List[Char] = List('A', 'B', 'C', 'D', 'E', 'F', 'G',
+        'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T',
+        'U', 'V', 'W', 'X', 'Y', 'Z')
+
+    def allDigits: List[Char] = (List('0') ++ lowerChr ++ upperChr)
+}
+
+
+                            </code></pre>
+                            <img class="img-thumbnail" src="static/img/base53spec-output-med.jpg">
+                        </div>
+                        <div role="tabpanel" class="tab-pane" id="javascript-ex">
+                        <h4>Bootstrap Tab control</h4>
+                        <p class="code-desc">
+                        Tab switching.
+
+                        aka that which brought you here.
+                        </p>
+                            <pre><code class="javascript">
+$('#code-ex a').click(function (e) {
+    e.preventDefault()
+    $(this).tab('show')
+});
+                            </code></pre>
+
+                        </div>
+
+                    </div><!-- tab-content -->
+                </div><!-- panel-body -->
+            </div><!-- panel -->
+        </div>
+
+    </body>
+
+    <footer>
+
+        <script>
+
+            $('#code-ex a').click(function (e) {
+                e.preventDefault()
+                $(this).tab('show')
+            });
+
+        </script>
+    </footer>
 </html>

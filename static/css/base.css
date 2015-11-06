@@ -1,36 +1,191 @@
 
 body {
-    background: #ecf0f1;
+    text-align: center;
     font: 'Source Sans Pro', sans-serif;
-    display:flex;
+
+    width: 100%;
 }
 
 img {
-    border-radius: 150px;
-    border: 8px solid #ecf0f1;
-    width: 50%;
-    max-width: 150px;
-}
-
-#bcard {
-    max-width: 50%;
-    padding: 20px;
-    background-color: #FFF;
-    box-shadow: 5px 5px rgba(0,0,0,0.1);
     text-align: center;
 }
 
 
-.quote {
-    font-weight: 200;
-    font-style: italic;
-    font-size: 1.5rem;
+#bcard {
+
+    box-shadow: 5px 5px rgba(0,0,0,0.1);
+    text-align: center;
+}
+
+.bg-red {
+    background: #0D0;
+    color: #333;
+}
+
+.bg-dark {
+    background-color: #333;
+    color: #DDD;
+}
+
+.bg-red {
+    background-color: #0D0;
+    color: #333;
+}
+
+.bg-ora {
+    background: rgba(230,130,0,0.75);
+    color: #333;
+}
+
+.jumbotron.jumbo-shrink {
+    padding-top: 15px;
+    padding-bottom: 15px;
+}
+
+.jumbotron.jumbo-shrink h2 {
+    margin-top: 10px;
 }
 
 a:link, a:visited {
-    color: #ECF0F1;
+    color: #444;
 }
 
 a:hover {
-    color: #2980b9;
+    color: #AAA;
+}
+
+.nlcr {
+    margin-top: 30px;
+}
+
+.nlcr-border {
+    margin-top: 30px;
+    border-top: 1px solid rgba(230,230,230,0.4);
+    margin-bottom: 30px;
+}
+
+.skill-table {
+
+}
+
+.skill-table table {
+
+}
+
+
+.skill-table th {
+    text-align: center;
+}
+
+
+.panel-heading h3,
+.panel-heading h4 {
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+.skill-table div.panel-body {
+    background: #DDD;
+}
+
+.panel-ora .panel-heading {
+    background: #DA6600;
+    color: #FFF;
+}
+
+.panel-ora .panel-body {
+    background: #FFF;
+}
+
+.panel-body table {
+    margin: 0 0 0 0;
+}
+
+.panel-ora .panel-body table {
+    background: #FFF;
+}
+
+.panel-body,
+.panel-body h4,
+.panel-body h5,
+.panel-body h6 {
+    color: #333;
+}
+
+.panel-ora .panel-heading h4 {
+    text-align: left;
+}
+
+#nav-btns {
+    background: #DDD;
+    width: 100px;
+}
+
+#nav-btns button {
+    width: 100px;
+    border: none;
+}
+
+#info-panel .prof-pic {
+    padding-left: 0;
+    padding-right: 0;
+}
+
+#info-panel table {
+    color: #333;
+}
+
+#info-panel tr td:first-child {
+    width: 20%;
+}
+
+#info-panel div.row > div:first-child {
+    border-right: 2px solid #DDD;
+}
+
+.panel-ora p {
+
+    background: #FFF;
+    color: #333;
+    text-align: left;
+}
+
+#code-ex code {
+    text-align: left;
+    max-height: 500px;
+    font-size: 10px;
+}
+
+p.code-desc {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    font-size: 13px;
+    white-space: pre-line;
+}
+
+#code-ex .tab-content h4 {
+    color: #333;
+}
+
+#code-ex div.panel {
+    min-height: 800px;
+}
+
+#experience-desc p {
+    white-space: pre-line;
+}
+#experience-desc {
+    text-align: left;
+}
+
+#experience-desc h6 {
+    text-align: left;
+    color: #333;
+    font-weight: normal;
+}
+
+div.h-bullets {
+
+    padding-left: 50px;
+    padding-right: 50px;
 }
