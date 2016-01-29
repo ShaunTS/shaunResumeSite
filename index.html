@@ -51,25 +51,27 @@
             <div class="panel panel-default">
                 <div class="panel-body">
                     <div class="row">
-                        <div class="col-md-3">
-                            <div class="prof-pic">
-                                <img src="static/img/pipboy.jpg">
+                        <div class="media">
+                            <div class="media-left">
+                                <div class="prof-pic">
+                                    <img class="media-object" src="static/img/simpleProfMain.jpg">
+                                </div>
                             </div>
-                        </div>
-                        <div class="col-md-9">
-                            <table class="table">
-                                <thead>
-                                    <tr><th colspan="2"><h4>Personal Info</h4></th></tr>
-                                </thead>
-                                <tbody>
-                                    <tr><td>Most Recent</td><td>Software Engineer at Jaroop (September 2014 - August 2015)</td></tr>
+                            <div class="media-body">
+                                <table class="table">
+                                    <thead>
+                                        <tr><th colspan="2"><h4>Personal Info</h4></th></tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr><td>Most Recent</td><td>Software Engineer at Jaroop (September 2014 - August 2015)</td></tr>
 
-                                    <tr><td>education</td><td>Central Connecticut State University</td></tr>
-                                    <tr><td>location</td><td>Southbury, CT</td></tr>
-                                    <tr><td>phone</td><td>(203) 233-7753</td></tr>
-                                    <tr><td>email</td><td>sts_0@outlook.com</td></tr>
-                                </tbody>
-                            </table>
+                                        <tr><td>education</td><td>Central Connecticut State University</td></tr>
+                                        <tr><td>location</td><td>Southbury, CT</td></tr>
+                                        <tr><td>phone</td><td>(203) 233-7753</td></tr>
+                                        <tr><td>email</td><td>sts_0@outlook.com</td></tr>
+                                    </tbody>
+                                </table>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -177,11 +179,12 @@
                     <ul class="nav nav-tabs" role="tablist">
                       <li role="presentation" class="active"><a href="#scala-ex" aria-controls="scala-ex">Scala</a></li>
                       <li role="presentation"><a href="#specs2-ex" aria-controls="specs2-ex">Specs2</a></li>
+                      <li role="presentation"><a href="#js-ex" aria-controls="js-ex">JavaScript</a></li>
                     </ul>
 
                     <div class="tab-content">
                         <div role="tabpanel" class="tab-pane active" id="scala-ex">
-                        <h4>Base53 Utility</h4>
+                            <h4>Base53 Utility</h4>
                             <p class="code-desc">
                             This is a simple utility I devised for the purpose of aliasing number values to more recognizable alphabetic characters.
 
@@ -382,6 +385,367 @@ trait Base53Expected {
 
                             </code></pre>
                             <img class="img-thumbnail" src="static/img/base53spec-output-med.jpg">
+                        </div>
+
+                        <div role="tabpanel" class="tab-pane" id="js-ex">
+                            <h4>Underscore-the-Sequel</h4>
+                            <p class="code-desc">
+                            This package adds JavaScript functions geared primarily towards:
+                            </p>
+                            <ul class="list list-unstyled">
+                                <li>+ Testing against empty types such as 'undefined', NaN, or null.</li>
+                                <li>+ Ensuring that objects contain an expected nested key or keys.</li>
+                                <li>+ Testing whether two Arrays or Objects contain the same Elements.</li>
+                                <li>+ Safely getting a deeply nested variale from within an object with type checking, with or without throwing errors.</li>
+                            </ul>
+
+                            <p class="code-desc">
+                                As the name suggests, this package draws heavily on (and requires) Underscore.js.
+
+                                All functionality is accessed using the object namespace '_II', eg:
+                                <code class="simple-code">
+        let thing = {
+            one: {
+                id: 1,
+                name: "abcd",
+                two: { id: 2, name: "efg" }
+            }
+        }
+
+        _II.getString(thing, 'one.two.name')
+            would return: "efg"
+
+        whereas  _.getString(thing, 'one.two.three.four.five.name')
+            would simply return: ""
+                                </code>
+                            </p>
+
+                            <pre><code class="javascript">
+var _II = {};
+
+(function(_ii) {
+
+    if(_.isUndefined(_ii)) {
+        _ii = {};
+    }
+
+    _ii.errors = {};
+
+    _ii.errors.failedGet = function(obj, keyString) {
+        throw Error(
+            [
+                '(_II ERROR) Failed get on obj[', obj, '] for keystring(', keyString, ') '
+            ].join("")
+        );
+    };
+
+    _ii.errors.failedGetType = function(obj, keyString, typ) {
+        throw Error(
+            [
+                '(_II ERROR) Failed get on obj[', obj,
+                '] for keystring(', keyString, ') ',
+                'not of type(', typ, ')'
+            ].join("")
+        );
+    };
+
+    _ii.isNone = function(arg) {
+        return (
+            _.isUndefined(arg) || _.isNull(arg) || _.isNaN(arg)
+        );
+    };
+
+    _ii.nonEmpty = function(obj) {
+        return !(_ii.isNone(obj) || _.isEmpty(obj));
+    };
+
+    _ii.nonEmptyObj = function(obj) {
+        return (_ii.nonEmpty() && _.isObject(obj));
+    };
+
+    _ii.nonEmptyArray = function(arr) {
+        return (
+            _ii.nonEmpty(arr) && (arr instanceof Array)
+        );
+    };
+
+    _ii.nonEmptyStrings = function(obj) {
+
+        return (
+            _ii.nonEmpty(obj) &&
+            _.every(obj, function(field) { return !(_.isNull(field) || _.isUndefined(field)) }) &&
+            _.every(obj, function(field) { return (typeof field == 'string') }) &&
+            _.every(obj, function(field) { return field.length > 0 })
+        );
+    };
+
+    _ii.sameElements = function(argA, argB) {
+        if(_.any([argA, argB], function(arg) {
+                return !((arg instanceof Array) || (arg instanceof Object));
+            })
+        ) throw Error("'sameElements' function requires two arguements that are either an Array or object");
+
+        let listA = _.values(argA);
+        let listB = _.values(argB);
+
+        if(listA.length !== listB.length) return false;
+
+        return _.every(listA, function(element) { return listB.includes(element) });
+    };
+
+    _ii.hasKey = function(obj, keyString) {
+        if(!_ii.nonEmptyString(keyString)) return false;
+
+        try {
+            var tryVal = obj;
+
+            let nested = _.initial(keyString.split("."));
+            let test = _.last(keyString.split("."));
+
+            _.each(nested, function(key) {
+                tryVal = tryVal[key];
+            });
+
+            return _.has(tryVal, test);
+        }
+        catch(e) {
+            return false;
+        }
+    };
+
+    _ii.hasKeys = function(obj, keys) {
+        if(!(obj instanceof Object))
+            throw Error("First arguement of 'hasKeys' must be an Object");
+
+        if(!(keys instanceof Array))
+            throw Error("Second arguement of 'hasKeys' must be an Array");
+
+        return _.every(keys, function(key) {
+            return _ii.hasKey(obj, key);
+        });
+    };
+
+    _ii.isMissing = function(obj, key) {
+        return !_ii.hasKey(obj, key)
+    };
+
+    _ii.isMissingAny = function(obj, keys) {
+
+        if(!(obj instanceof Object))
+            throw Error("First arguement of 'isMissingAny' must be an Object");
+
+        if(!(keys instanceof Array))
+            throw Error("Second arguement of 'isMissingAny' must be an Array");
+
+        return _.any(keys, function(key) {
+            return _ii.isMissing(obj, key);
+        });
+    };
+
+    _ii.nonEmptyString = function(str) {
+        return (
+            !(_.isNull(str) || _.isUndefined(str)) &&
+            (typeof str == 'string') &&
+            (str.length > 0)
+        );
+    }
+
+    _ii.nonEmptyNumber = function(n) {
+        return (
+            !(_.isNull(n) || _.isUndefined(n) || _.isNaN(n)) && _.isNumber(n)
+        );
+    };
+
+    _ii.greaterThanZero = function(n) {
+        return (!_ii.nonEmptyNumber(n) && n > 0);
+    };
+
+
+    _ii.println = function(tag, val) {
+        console.log("\n-------------------- " +tag);
+        console.log(val);
+        console.log("--------------------\n");
+    };
+
+    _ii.dateTypeOrNull = function(date) {
+
+        if(date instanceof Date) return date;
+
+        if(_ii.nonEmptyString(date)) return (new Date(date));
+
+        return null;
+    };
+
+    _ii.urlLeadingSlash = function(url) {
+
+        if(!_ii.nonEmptyString(url)) return url;
+
+        let fix = [url];
+
+        if(url.charAt(0) !== "/")
+            fix.unshift("/");
+
+        return fix.join("");
+    }
+
+
+
+
+    _ii.get = function(obj, keyString) {
+
+        if(!_ii.nonEmptyString(keyString))
+            _ii.errors.failedGet(obj, keyString)
+
+        try {
+            var tryVal = obj;
+
+            _.each(keyString.split("."), function(key) {
+                tryVal = tryVal[key];
+            });
+
+            return tryVal;
+        }
+        catch(e) {
+            _ii.errors.failedGet(obj, keyString)
+        }
+    }
+
+    _ii.getBoolean = function(obj, keyString) {
+        let getVal = _ii.get(obj, keyString);
+
+        if(typeof getVal !== 'boolean')
+            _ii.errors.failedGetType();
+
+        return getVal;
+    }
+
+    _ii.getOrElse = function(obj, keyString, fallback) {
+
+        if(!_ii.nonEmptyString(keyString)) return fallback;
+
+        try {
+
+            var tryVal = obj;
+
+            _.each(keyString.split("."), function(key) {
+                tryVal = tryVal[key];
+            });
+
+            if(_ii.isNone(tryVal)) return fallback;
+
+            return tryVal;
+        }
+        catch(e) {
+            return fallback;
+        }
+    }
+
+    _ii.getArray = function(obj, keyString) {
+
+        let tryGet = _ii.getOrElse(obj, keyString, []);
+
+        let result = (tryGet instanceof Array) ? tryGet : [];
+
+        return result;
+    }
+
+    _ii.getString = function(obj, keyString) {
+
+        if(!_ii.nonEmptyString(keyString)) return "";
+
+        try {
+
+            var tryVal = obj;
+
+            _.each(keyString.split("."), function(key) {
+                tryVal = tryVal[key];
+            })
+
+            let result = (_ii.nonEmptyString(tryVal)) ? tryVal : "";
+
+            return result;
+        }
+        catch(e) {
+            return "";
+        }
+    }
+
+    _ii.getStringOrElse = function(obj, keyString, fallback) {
+
+        if(!_ii.nonEmptyString(keyString)) return fallback;
+
+        try {
+
+            var tryVal = obj;
+
+            _.each(keyString.split("."), function(key) {
+                tryVal = tryVal[key];
+            });
+
+            let result = (_ii.nonEmptyString(tryVal)) ? tryVal : fallback;
+
+            return result;
+        }
+        catch(e) {
+            return fallback;
+        }
+    }
+
+    _ii.getInt = function(obj, keyString, fallback) {
+
+        if(!_ii.nonEmptyString(keyString)) return "";
+
+        try {
+            var tryVal = obj;
+
+            _.each(keyString.split("."), function(key) {
+                tryVal = tryVal[key];
+            });
+
+            let result = (_ii.nonEmptyNumber(tryVal)) ? tryVal : NaN;
+
+            return result;
+        }
+        catch(e) {
+            return NaN;
+        }
+    };
+
+    _ii.getIntOrElse = function(obj, keyString, fallback) {
+
+        if(!_ii.nonEmptyString(keyString)) return "";
+
+        try {
+
+            var tryVal = obj;
+
+            _.each(keyString.split("."), function(key) {
+                tryVal = tryVal[key];
+            });
+
+            let result = (_ii.nonEmptyNumber(tryVal)) ? tryVal : fallback;
+
+            return result;
+        }
+        catch(e) {
+            return fallback;
+        }
+    };
+
+    _ii.parseIntOrElse = function(num, fallback) {
+        try {
+            let n = parseInt(num);
+            if(!_ii.nonEmptyNumber(n)) return fallback;
+
+            return n;
+        }
+        catch(e) {
+            return fallback;
+        }
+    };
+
+})(_II);
+                            </code></pre>
                         </div>
                     </div><!-- tab-content -->
                 </div><!-- panel-body -->
