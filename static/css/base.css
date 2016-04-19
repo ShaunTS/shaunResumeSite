@@ -84,8 +84,42 @@ a:hover {
     margin-bottom: 0;
 }
 
-.skill-table div.panel-body {
+.skill-table div.panel-body,
+#recent-work div.panel-body {
     background: #DDD;
+}
+
+#recent-work thead h3 {
+    margin-bottom: 0;
+}
+
+#recent-work thead th {
+    padding-left: 20px;
+}
+
+#recent-work table:first-of-type {
+    margin-bottom: 10px;
+}
+
+#recent-work a,
+#recent-work table {
+    border-radius: 8px;
+}
+
+#recent-work a:hover {
+    text-decoration: none;
+}
+
+#recent-work a:hover table.table-bordered th,
+#recent-work a:hover table.table-bordered td  {
+    background: rgba(255, 102, 0, 0.25);
+    color: rgb(40, 40, 40);
+    font-style: italic;
+}
+
+#recent-work td {
+    text-align: left;
+    padding-left: 35px;
 }
 
 .panel-ora .panel-heading {
