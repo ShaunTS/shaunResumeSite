@@ -89,6 +89,12 @@ a:hover {
     background: #DDD;
 }
 
+#recent-work a:focus,
+#recent-work h3:focus {
+    text-decoration: none;
+    font-style: italic;
+}
+
 #recent-work thead h3 {
     margin-bottom: 0;
 }
